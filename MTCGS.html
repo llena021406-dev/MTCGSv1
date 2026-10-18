@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MTCGS - Multi-Branch Enrollment & Financial Management</title>
+<link rel="stylesheet" href="mtcgs-styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- LOGIN -->
+<div id="login-screen" class="screen active auth-wrap">
+    <div class="auth-left">
+      <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+      <div class="seal-wrap"><div class="seal-r1"></div><div class="seal-r2"></div>
+        <div class="seal-inner"><span class="seal-abbr">MTC</span><span class="seal-yr">MMXVII</span></div>
+      </div>
+      <div class="auth-title">Mother Theresa <br>Group of Schools</div>
+      <div class="auth-sub">Enrollment &amp; Financial Management</div>
+      <div class="auth-divider"></div>
+      <div class="auth-tagline">Multi-branch school operations, finance &amp; student lifecycle - unified.</div>
+      <div class="auth-stats">
+        <div><div class="auth-stat-val">2</div><div class="auth-stat-lbl">Branches</div></div>
+        <div class="auth-stat-div"></div>
+        <div><div class="auth-stat-val">K–12</div><div class="auth-stat-lbl">Program</div></div>
+        <div class="auth-stat-div"></div>
+        <div><div class="auth-stat-val">2017</div><div class="auth-stat-lbl">Founded</div></div>
+      </div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-header fade-up"><h2>Welcome back</h2><p>Sign in to the MTCGS Management System</p></div>
+      <div class="form-group fade-up d1">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-input" id="l-email" placeholder="you@mothertheresa.edu.ph" autocomplete="email"/>
+        <div class="form-error" id="l-email-err">Please enter your email address</div>
+      </div>
+      <div class="form-group fade-up d2">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.45rem">
+          <label class="form-label" style="margin:0">Password</label>
+          <a style="font-size:12px;color:var(--gold);font-weight:500;cursor:pointer">Forgot password?</a>
+        </div>
+        <input type="password" class="form-input" id="l-pwd" placeholder="••••••••" autocomplete="current-password"/>
+        <div class="form-error" id="l-pwd-err">Incorrect password</div>
+      </div>
+      <div class="remember-row fade-up d3"><input type="checkbox" id="l-remember"/><label for="l-remember">Remember me on this device</label></div>
+      <button class="btn-auth fade-up d4" id="l-btn" onclick="doLogin()">Sign in to System</button>
+      <div class="auth-switch fade-up d5">Don't have an account? <a onclick="showScreen('register-screen')">Request access</a></div>
+      <div class="auth-legal"><button type="button" onclick="openLegal('privacy')">Privacy Policy</button><button type="button" onclick="openLegal('terms')">Terms of Service</button><button type="button" onclick="openLegal('sdk')">Third-party audit</button></div>
+      <div class="auth-footer">
+        <span style="color:var(--text-3)">Quick demo login:</span><br>
+        <small style="display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-top:.4rem">
+          <button type="button" onclick="quickLogin('finance')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Finance</button>
+          <button type="button" onclick="quickLogin('cashier')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Cashier</button>
+          <button type="button" onclick="quickLogin('accountant')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Accountant</button>
+          <button type="button" onclick="quickLogin('parent')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Parent</button>
+          <button type="button" onclick="quickLogin('registrar')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Registrar</button>
+          <button type="button" onclick="quickLogin('branch')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Branch Head</button>
+          <button type="button" onclick="quickLogin('president')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">President</button>
+          <button type="button" onclick="quickLogin('teacher')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Teacher</button>
+          <button type="button" onclick="quickLogin('auditor')" style="cursor:pointer;background:var(--gold-ghost);padding:.15rem .45rem;border-radius:4px;font-size:11px;color:var(--navy);border:0">Auditor</button>
+        </small>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTER -->
+  <div id="register-screen" class="screen auth-wrap">
+    <div class="auth-left">
+      <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
+      <div class="seal-wrap"><div class="seal-r1"></div><div class="seal-r2"></div>
+        <div class="seal-inner"><span class="seal-abbr">MTC</span><span class="seal-yr">MMXVII</span></div>
+      </div>
+      <div class="auth-title">Join the MTCGS<br>Management System</div>
+      <div class="auth-sub">Staff Registration Portal</div>
+      <div class="auth-divider"></div>
+    </div>
+    <div class="auth-right">
+      <div class="auth-header fade-up"><h2>Request Access</h2><p>Fill in your details</p></div>
+      <div class="form-row fade-up d1">
+        <div class="form-group" style="margin-bottom:0"><label class="form-label">First name</label><input type="text" class="form-input" id="r-fname" placeholder="Maria"/></div>
+        <div class="form-group" style="margin-bottom:0"><label class="form-label">Last name</label><input type="text" class="form-input" id="r-lname" placeholder="Santos"/></div>
+      </div>
+      <div style="height:.75rem"></div>
+      <div class="form-group fade-up d2"><label class="form-label">Email address</label><input type="email" class="form-input" id="r-email" placeholder="m.santos@mothertheresa.edu.ph"/></div>
+      <div class="form-group fade-up d2"><label class="form-label">Role applying for</label>
+        <select class="form-input" id="r-role"><option value="">Select role...</option><option value="finance">Finance Officer</option><option value="admin">Admin Officer</option><option value="registrar">Registrar</option><option value="lis">LIS Head</option><option value="teacher">Teacher</option><option value="cashier">Cashier</option><option value="accountant">Accountant</option><option value="auditor">Auditor</option></select>
+      </div>
+      <div class="form-group fade-up d3"><label class="form-label">Branch / Campus</label>
+        <select class="form-input" id="r-branch"><option value="">Select branch...</option><option>Patnubay</option><option>Noveleta</option></select>
+      </div>
+      <div class="form-row fade-up d3">
+        <div class="form-group" style="margin-bottom:0"><label class="form-label">Password</label><input type="password" class="form-input" id="r-pwd" placeholder="••••••••"/></div>
+        <div class="form-group" style="margin-bottom:0"><label class="form-label">Confirm password</label><input type="password" class="form-input" id="r-pwd2" placeholder="••••••••"/></div>
+      </div>
+      <div style="height:.75rem"></div>
+      <div style="display:flex;gap:.5rem;align-items:flex-start;margin:.5rem 0"><input type="checkbox" id="r-consent" style="margin-top:.25rem"><label for="r-consent" style="font-size:12.5px">I have read the <a href="#" onclick="openLegal('privacy');return false">Privacy Policy</a> and <a href="#" onclick="openLegal('terms');return false">Terms of Service</a> and agree to the use of my details for school account administration.</label></div>
+      <div class="form-error" id="r-err" style="margin-bottom:.5rem" role="alert"></div>
+      <button class="btn-auth fade-up d4" id="r-btn" onclick="doRegister()">Submit Registration Request</button>
+      <div class="auth-switch">Already have an account? <a onclick="showScreen('login-screen')">Sign in</a></div>
+    </div>
+  </div>
+  
+  <!-- APP -->
+  <div id="app-screen">
+    <nav class="sidebar" id="sidebar">
+      <div class="sb-brand">
+        <div class="sb-seal"><span>MTC</span></div>
+        <div class="sb-brand-text"><h3>MTCGS System</h3></div>
+      </div>
+      <div class="sb-branch-pill"><div class="sb-branch-dot"></div><div class="sb-branch-name" id="sb-branch-name">Patnubay</div></div>
+      <div id="sidebar-nav"></div>
+      <div class="sb-footer">
+        <div class="user-card">
+          <div class="user-av" id="sb-av">FO</div>
+          <div><div class="user-name" id="sb-name">Finance Officer</div><div class="user-role" id="sb-role">Patnubay</div></div>
+          <button class="logout-btn" onclick="doLogout()" title="Sign out">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="main-area">
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:.6rem;flex:1;min-width:0">
+          <button class="btn-icon" onclick="toggleSidebar()" style="flex-shrink:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-title" id="page-title">Dashboard</div>
+        </div>
+        <div class="topbar-right">
+          <div class="school-badge">S.Y. 2025–2026</div>
+          <div class="topbar-btn" id="notif-btn" onclick="toggleNotif()" style="position:relative">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div class="notif-dot"></div>
+            <div class="notif-dropdown" id="notif-dropdown" style="display:none">
+              <div class="notif-header"><span style="font-weight:600;font-size:13px;color:var(--navy)">Notifications</span><button class="link-btn btn-sm" onclick="markAllRead(event)">Mark all read</button></div>
+              <div id="notif-list"></div>
+            </div>
+          </div>
+          <div class="topbar-av" id="topbar-av" onclick="navigate('profile')">FO</div>
+        </div>
+      </header>
+      <main class="page-content" id="main-content" tabindex="-1"></main>
+      <footer class="legal-foot"><span>© Mother Theresa Colegio Group of Schools</span><button type="button" onclick="openLegal('privacy')">Privacy Policy</button><button type="button" onclick="openLegal('terms')">Terms of Service</button><button type="button" onclick="openLegal('sdk')">Third-party audit</button><button type="button" onclick="openLegal('keys')">Keyboard help</button></footer>
+    </div>
+  </div>
+  
+  <!-- MODAL: PAYMENT -->
+  <div class="modal-overlay" id="modal-payment">
+    <div class="modal">
+      <div class="modal-header"><div class="modal-title">Record Payment</div><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-payment')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label">Student</label><select class="form-input" id="pay-student"></select></div>
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Amount (₱)</label><input type="number" class="form-input" id="pay-amount" placeholder="0.00" min="0"/></div>
+          <div class="form-group" style="margin-bottom:0"><label class="form-label">Payment channel</label>
+            <select class="form-input" id="pay-channel" onchange="document.getElementById('pay-ref-wrap').style.display=this.value==='cash'?'none':'block'"><option value="cash">Cash</option><option value="gcash">GCash</option><option value="bank">Bank Transfer</option></select>
+          </div>
+        </div>
+        <div style="height:.75rem"></div>
+        <div class="form-group"><label class="form-label">Payment for</label>
+          <select class="form-input" id="pay-type"><option value="tuition">Tuition</option><option value="misc">Miscellaneous</option><option value="extracurricular">Extracurricular</option><option value="enrollment">Upon Enrollment Fee</option></select>
+        </div>
+        <div class="form-group" id="pay-ref-wrap" style="display:none"><label class="form-label" for="pay-ref">Reference number (required for GCash / bank transfer)</label><input type="text" class="form-input" id="pay-ref" placeholder="e.g. GC-882104" maxlength="40"/></div>
+        <div class="form-group"><label class="form-label">Notes (optional)</label><input type="text" class="form-input" id="pay-notes" placeholder="e.g. Partial payment for May"/></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('modal-payment')">Cancel</button>
+        <button class="btn-primary" onclick="submitPayment()">Post Payment &amp; Print OR</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- MODAL: STUDENT -->
+  <div class="modal-overlay" id="modal-student">
+    <div class="modal modal-lg">
+      <div class="modal-header"><div class="modal-title" id="modal-student-title">Student Record</div><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-student')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+      <div class="modal-body" id="modal-student-body"></div>
+      <div class="modal-footer"><button class="btn-outline" onclick="closeModal('modal-student')">Close</button><button class="btn-primary" id="modal-student-save" onclick="submitStudentForm(null)">Save</button></div>
+    </div>
+  </div>
+  
+  <!-- MODAL: OR -->
+  <div class="modal-overlay" id="modal-or">
+    <div class="modal">
+      <div class="modal-header"><div class="modal-title">Official Receipt</div><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-or')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+      <div class="modal-body" id="or-content"></div>
+      <div class="modal-footer"><button class="btn-outline" onclick="closeModal('modal-or')">Close</button><button class="btn-primary" onclick="window.print()">Print Receipt</button></div>
+    </div>
+  </div>
+  
+  <!-- MODAL: TIMETABLE -->
+  <div class="modal-overlay" id="modal-tt">
+    <div class="modal modal-xl">
+      <div class="modal-header">
+        <div><div class="modal-title">✦ AI Timetable Generator</div><div style="font-size:12px;color:var(--text-3);margin-top:.2rem">Auto-generates schedules based on teacher availability, room capacity &amp; subject requirements</div></div>
+        <button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-tt')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="grid-eq" id="tt-config">
+          <div>
+            <div class="form-group"><label class="form-label">Grade level</label>
+              <select class="form-input" id="tt-grade"><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Grade 11 - STEM</option><option>Grade 11 - ABM</option><option>Grade 11 - HUMSS</option><option>Grade 11 - TVL</option><option>Grade 12 - STEM</option><option>Grade 12 - ABM</option></select>
+            </div>
+            <div class="form-row"><div class="form-group" style="margin-bottom:0"><label class="form-label">Section</label>
+              <input type="text" class="form-input" id="tt-section" placeholder="A" value="A" maxlength="10"/></div>
+            <div class="form-group" style="margin-bottom:0"><label class="form-label">Section size (students)</label>
+              <input type="number" class="form-input" id="tt-size" placeholder="35" value="35" min="1" max="60"/></div></div>
+            <div style="height:.75rem"></div>
+            <div class="form-group"><label class="form-label">School year</label>
+              <select class="form-input" id="tt-sy"><option>2025–2026</option><option>2026–2027</option></select>
+            </div>
+            <div class="form-group"><label class="form-label">Start time</label>
+              <select class="form-input" id="tt-start"><option value="7">7:00 AM</option><option value="7.5">7:30 AM</option><option value="8" selected>8:00 AM</option></select>
+            </div>
+            <div class="form-group"><label class="form-label">Period length (minutes)</label>
+              <input type="range" id="tt-period" min="45" max="90" value="60" step="5" oninput="document.getElementById('tt-period-val').textContent=this.value"/>
+              <div style="font-size:12px;color:var(--text-2);margin-top:.25rem">Duration: <strong id="tt-period-val">60</strong> min</div>
+            </div>
+          </div>
+          <div>
+            <div class="form-group"><label class="form-label">Teachers available</label><div id="tt-teachers" style="display:flex;flex-direction:column;gap:.4rem;max-height:180px;overflow-y:auto"></div></div>
+            <div class="form-group"><label class="form-label">Special constraints</label>
+              <select class="form-input" id="tt-constraints"><option value="">None</option><option value="no-monday">No Monday classes</option><option value="no-friday">Light Friday schedule</option><option value="morning-only">Morning periods only</option></select>
+            </div>
+            <button class="btn-gold" style="width:100%;justify-content:center" onclick="generateTimetable()">✦ Generate with AI</button>
+          </div>
+        </div>
+        <div id="tt-result" style="display:none">
+          <div id="tt-status-banner"></div>
+          <div class="tt-grid" id="tt-grid"></div>
+          <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="btn-primary" onclick="saveTimetable()">Save Timetable</button>
+            <button class="btn-outline" onclick="generateTimetable()">Regenerate</button>
+            <button class="btn-outline" onclick="window.print()">Print / Export</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- MODAL: USER APPROVALS -->
+  <div class="modal-overlay" id="modal-users">
+    <div class="modal modal-lg">
+      <div class="modal-header"><div class="modal-title">Pending User Approvals</div><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-users')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+      <div class="modal-body" id="modal-users-body"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-legal"><div class="modal modal-lg"><div class="modal-header"><div class="modal-title" id="legal-title"></div><button class="modal-close" aria-label="Close dialog" onclick="closeModal('modal-legal')"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body" id="legal-body"></div></div></div>
+  <!-- LOGIN LOADING OVERLAY -->
+  <div class="login-loading-overlay" id="login-loading-overlay">
+    <div class="lload-seal"><div class="lload-ring"></div><span>MTC</span></div>
+    <div class="lload-text" id="lload-text">Preparing your dashboard…</div>
+    <div class="lload-dots" style="margin-top:.6rem"><span></span><span></span><span></span></div>
+  </div>
+  <script src="mtcgs-script.js"></script>
+    </body>
+    </html>  
